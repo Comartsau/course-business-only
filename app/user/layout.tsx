@@ -47,7 +47,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className=" sticky top-0 z-50">
       <UserHeader />
       </div>
-      <div className="bg-[#19191A] bg-opacity-75" >
+      <div className="bg-[#19191A] bg-opacity-75 flex-grow" >
       {children}
       </div>
       <UserFooter />

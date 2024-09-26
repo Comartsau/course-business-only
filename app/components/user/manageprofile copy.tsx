@@ -96,7 +96,7 @@ export default function ManageProfile() {
           }
         );
         if (res.status === 200) {
-          toast.success(res.data.message);
+          toast.success("อัพเดทข้อมูลสำเร็จ");
           if (res.data.statusPassword === 1) {
             router.push("/home");
             localStorage.clear();
@@ -112,7 +112,7 @@ export default function ManageProfile() {
   };
 
   return (
-    <div className="flex flex-col items-center h-full p-5 ">
+    <div className="flex flex-col items-center h-full p-5 bg-gray-100">
       <ToastContainer autoClose={2000} theme="colored" />
       <Card className="flex flex-col items-center w-full max-w-2xl p-6 my-10 shadow-md gap-5 bg-white bg-opacity-90 backdrop-blur-sm">
         <div className="flex flex-col sm:flex-row gap-2 text-center">

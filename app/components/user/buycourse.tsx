@@ -20,8 +20,6 @@ import CryptoJS from "crypto-js";
 
 const MySwal = withReactContent(Swal);
 
-
-
 const BuyCourse = () => {
   // const buyData = useRecoilValue(BuyCourseStore);
   const [buyData, setBuyData] = useState<any>(null);
@@ -52,37 +50,35 @@ const BuyCourse = () => {
     return text;
   };
 
-  useEffect(() => {
-
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API}/api/product/${id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${decryptData(
-                localStorage.getItem("Token") || ""
-              )}`,
-            },
-          }
-        );
-        console.log(res.data);
+  const fetchData = async () => {
+    try {
+      const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_API}/api/product/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${decryptData(
+              localStorage.getItem("Token") || ""
+            )}`,
+          },
+        }
+      );
+      console.log(res.data);
       if (res.status === 200) {
-        setBuyData(res.data); 
+        setBuyData(res.data);
       } else {
         toast.error("error");
       }
-        
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        toast.error("Failed to fetch data from server.");
-      }
-    };
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      toast.error("Failed to fetch data from server.");
+    }
+  };
 
+  useEffect(() => {
     fetchData();
   }, []);
 
-  console.log(buyData)
+  console.log(buyData);
 
   const handleFileChange = (event: any) => {
     setFile(event.target.files[0]); // Capture the file when the input changes
@@ -190,9 +186,9 @@ const BuyCourse = () => {
   // console.log(buyData)
 
   return (
-    <>
-      <ToastContainer autoClose={2000} theme="colored" />
+
       <div className="flex flex-col w-full justify-center items-center  lg:flex-row gap-5 pt-10 px-6 lg:px-36 overflow-auto  ">
+      <ToastContainer autoClose={2000} theme="colored" />
         <div className="w-full md:w-3/5 ">
           <Card className="lg:h-[550px] w-full overflow-auto gap-5 !bg-white ">
             <div className="w-full flex justify-center bg-gray-300 rounded-sm   ">
@@ -224,6 +220,24 @@ const BuyCourse = () => {
                 <Typography className="font-bold ">Dec:</Typography>
                 {/* <Typography>{truncateText(buyData?.dec || "", 70)}</Typography> */}
                 <Typography>{parse(buyData?.product_dec || "")}</Typography>
+              </div>
+              <div className="mt-4 mb-10">
+                <h1>รายละเอียดบทเรียน</h1>
+                <div className="mt-5 bg-gray-50 rounded-b">
+                  {buyData?.result_list?.map((lesson: any, index: number) => (
+                    <div
+                      key={index}
+                      className="flex border-b last:border-none py-2 px-5 justify-between items-center hover:bg-gray-100 transition duration-200"
+                    >
+                      <h2 className="font-semibold text-gray-700">
+                        {lesson.title}
+                      </h2>
+                      <h2 className="text-gray-600">
+                        {lesson.video_count} บทเรียน
+                      </h2>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </Card>
@@ -338,8 +352,6 @@ const BuyCourse = () => {
           </Card>
         </div>
       </div>
-      <Topsale />
-    </>
   );
 };
 

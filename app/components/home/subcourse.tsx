@@ -88,6 +88,7 @@ const SubCourse: React.FC<PageProps> = async ({ params }) => {
             ))}
           </div>
         </div>
+        
       </div>
 
       {/* ส่วนข้อมูลเพิ่มเติม */}

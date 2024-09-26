@@ -129,14 +129,12 @@ const CoursesPage: React.FC = () => {
               ผลลัพท์การค้นหา <span>{coursesData.length} คอร์ส </span>
             </p>
           </div>
-
- 
         </div>
 
         {/* Courses Grid */}
-        <div className="grid grid-cols-1 mt-5 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-14 ">
+        <div className="grid grid-cols-1 mt-5 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-10">
           {coursesData.map((course) => (
-            <div
+            <div 
               key={course.id}
               className="bg-white pb-3 shadow-md rounded-2xl flex flex-col justify-between"
             >
@@ -146,7 +144,7 @@ const CoursesPage: React.FC = () => {
                   alt={course.title}
                   width={500}
                   height={500}
-                  className="rounded-t-2xl mb-4 object-cover h-48 w-full"
+                  className="rounded-t-lg mb-4 object-cover h-48 w-full"
                 />
                 <div className="px-2 md:px-5">
                   <h2 className="text-md md:text-lg font-semibold">

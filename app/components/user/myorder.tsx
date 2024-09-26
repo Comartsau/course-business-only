@@ -2,12 +2,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 import {
   Card,
-  Button,
   Input,
   Typography,
-  IconButton,
-  Select,
-  Option,
 } from "@material-tailwind/react";
 import axios from "axios";
 import { HeaderAPI, HeaderMultiAPI } from "@/headerApi";
@@ -208,7 +204,7 @@ const MyOrder: React.FC = () => {
           </tbody>
         </table>
       </div>
-      <div className="flex justify-between items-center mt-5">
+      <div className="flex justify-end items-center gap-5 mt-5">
         <button
           className={`text-gray-400 text-2xl rounded-full border border-gray-300 shadow-md ${
             page === 1 ? "" : "hover:text-black"
